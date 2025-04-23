@@ -1,0 +1,3 @@
+1. Snake Case -> snake_case (Used for filenames)
+2. Pascal Case -> PascalCase (Used for class names)
+3. Camel Case -> camelCase (Used for variable and function names)
