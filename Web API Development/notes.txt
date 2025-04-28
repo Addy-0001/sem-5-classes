@@ -1,1 +1,14 @@
 Hello World
+
+Rest and Restful
+    * API - Application Programming Interface
+    * REST - Representational State Transfer
+    * Response Codes:
+        * 200 - success
+        * 300 - redirect 
+        * 400 - bad response 
+        * 500 - server error
+
+URL And URI
+* Any identifier that points to a server 
+* https://api.example.com/user/1?name="Abc"&age=10 
