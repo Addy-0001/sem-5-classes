@@ -1,5 +1,7 @@
+import 'package:arithmetic_cubit/cubit/arithmetic_cubit.dart';
 import 'package:arithmetic_cubit/view/arithmetic_home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -9,7 +11,10 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: "Arithmetic Cubit App",
       debugShowCheckedModeBanner: false,
-      home: ArithmeticHome(),
+      home: BlocProvider(
+        create: (context) => ArithmeticCubit(),
+        child: ArithmeticHome(),
+      ),
     );
   }
 }
