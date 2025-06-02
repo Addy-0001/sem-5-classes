@@ -16,7 +16,11 @@ class StudentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Student Cubit'), centerTitle: true),
+      appBar: AppBar(
+        title: Text('Student Cubit'),
+        centerTitle: true,
+        backgroundColor: Colors.amber,
+      ),
       body: Padding(
         padding: EdgeInsets.all(8),
         child: Form(

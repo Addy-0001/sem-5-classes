@@ -8,7 +8,12 @@ class CounterCubitView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Counter Cubit'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('Counter Cubit'),
+        centerTitle: true,
+        backgroundColor: Colors.amber,
+      ),
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -8,7 +8,11 @@ class DashboardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Dashboard'), centerTitle: true),
+      appBar: AppBar(
+        title: Text('Dashboard'),
+        centerTitle: true,
+        backgroundColor: Colors.amber,
+      ),
       body: GridView(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -24,7 +28,7 @@ class DashboardView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.add, size: 48),
+                  Icon(Icons.format_list_numbered, size: 48),
                   SizedBox(height: 15),
                   Text('Counter Cubit'),
                 ],
@@ -39,7 +43,7 @@ class DashboardView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.calculate_outlined, size: 48),
+                  Icon(Icons.numbers, size: 48),
                   SizedBox(height: 15),
                   Text('Arithmetic Cubit'),
                 ],
@@ -54,9 +58,22 @@ class DashboardView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.person_4_outlined, size: 48),
+                  Icon(Icons.person, size: 48),
                   SizedBox(height: 15),
                   Text('Student Cubit'),
+                ],
+              ),
+            ),
+          ),
+          Card(
+            child: InkWell(
+              onTap: () {},
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.numbers, size: 48),
+                  SizedBox(height: 15),
+                  Text('Arithmetic Bloc View'),
                 ],
               ),
             ),
