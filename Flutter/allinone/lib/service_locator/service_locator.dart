@@ -1,3 +1,4 @@
+import 'package:allinone/bloc/arithmetic_bloc.dart';
 import 'package:allinone/cubit/arithmetic_cubit.dart';
 import 'package:allinone/cubit/counter_cubit.dart';
 import 'package:allinone/cubit/dashboard_cubit.dart';
@@ -8,13 +9,23 @@ final serviceLocator = GetIt.instance;
 
 Future<void> initDependencies() async {
   _initBloc();
+  _initCubit();
 }
 
 void _initBloc() {
+  serviceLocator.registerLazySingleton(() => ArithmeticBloc());
+}
+
+void _initCubit() {
   serviceLocator.registerFactory<CounterCubit>(() => CounterCubit());
   serviceLocator.registerFactory<ArithmeticCubit>(() => ArithmeticCubit());
   serviceLocator.registerFactory<StudentCubit>(() => StudentCubit());
   serviceLocator.registerLazySingleton<DashboardCubit>(
-    () => DashboardCubit(serviceLocator(), serviceLocator(), serviceLocator()),
+    () => DashboardCubit(
+      serviceLocator(),
+      serviceLocator(),
+      serviceLocator(),
+      serviceLocator(),
+    ),
   );
 }
