@@ -67,7 +67,9 @@ class DashboardView extends StatelessWidget {
           ),
           Card(
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                
+              },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

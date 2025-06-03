@@ -1,14 +1,16 @@
+import 'package:allinone/bloc/arithmetic_bloc.dart';
+import 'package:allinone/bloc/arithmetic_event.dart';
 import 'package:allinone/cubit/arithmetic_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ArithmeticCubitView extends StatelessWidget {
-  ArithmeticCubitView({super.key});
+class ArithmeticBlocView extends StatelessWidget {
+  ArithmeticBlocView({super.key});
 
   final firstNumberController = TextEditingController();
   final secondNumberController = TextEditingController();
 
-  final Key mykey = GlobalKey();
+  final GlobalKey mykey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -80,9 +82,11 @@ class ArithmeticCubitView extends StatelessWidget {
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  context.read<ArithmeticCubit>().add(
-                    int.parse(firstNumberController.text),
-                    int.parse(secondNumberController.text),
+                  context.read<ArithmeticBloc>().add(
+                    IncrementEvent(
+                      int.parse(firstNumberController.text),
+                      int.parse(secondNumberController.text),
+                    ),
                   );
                 },
                 child: Text('Add'),
@@ -90,9 +94,11 @@ class ArithmeticCubitView extends StatelessWidget {
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  context.read<ArithmeticCubit>().sub(
-                    int.parse(firstNumberController.text),
-                    int.parse(secondNumberController.text),
+                  context.read<ArithmeticBloc>().add(
+                    DecrementEvent(
+                      int.parse(firstNumberController.text),
+                      int.parse(secondNumberController.text),
+                    ),
                   );
                 },
                 child: Text('Substract'),
@@ -100,9 +106,11 @@ class ArithmeticCubitView extends StatelessWidget {
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  context.read<ArithmeticCubit>().mul(
-                    int.parse(firstNumberController.text),
-                    int.parse(secondNumberController.text),
+                  context.read<ArithmeticBloc>().add(
+                    MultiplyEvent(
+                      int.parse(firstNumberController.text),
+                      int.parse(secondNumberController.text),
+                    ),
                   );
                 },
                 child: Text('Multiply'),
