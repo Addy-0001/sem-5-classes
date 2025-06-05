@@ -3,6 +3,7 @@ import 'package:sharedpreferences/model/user.dart';
 
 class SharedPref {
   late SharedPreferences _sharedPreferences;
+
   // Two functions for now.
   // Add username and password to sharedpreferences
   Future addUser(User user) async {
@@ -19,4 +20,6 @@ class SharedPref {
 
     return User(username: username ?? "", password: password ?? "");
   }
+
+  SharedPref({required SharedPreferences sharedPreferences});
 }

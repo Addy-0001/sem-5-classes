@@ -34,13 +34,13 @@ class _SharedPreferencesViewState extends State<SharedPreferencesView> {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                SharedPref sharedPref = SharedPref();
-                var user = User(
-                  username: _userNameController.text.trim(),
-                  password: _passwordController.text.trim(),
-                );
-                // Add to shared preferences
-                sharedPref.addUser(user);
+                // SharedPref sharedPref = SharedPref();
+                // var user = User(
+                //   username: _userNameController.text.trim(),
+                //   password: _passwordController.text.trim(),
+                // );
+                // // Add to shared preferences
+                // sharedPref.addUser(user);
 
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text("User Added Successfully")),
@@ -54,8 +54,8 @@ class _SharedPreferencesViewState extends State<SharedPreferencesView> {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () async {
-                SharedPref sharedPref = SharedPref();
-                user = await sharedPref.getUser();
+                // SharedPref sharedPref = SharedPref();
+                // user = await sharedPref.getUser();
                 setState(() {});
               },
               child: Text("Get Data"),
