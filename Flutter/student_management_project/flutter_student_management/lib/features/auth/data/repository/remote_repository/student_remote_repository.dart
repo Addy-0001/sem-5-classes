@@ -17,14 +17,14 @@ class StudentRemoteRepository implements IStudentRepository {
     try {
       final user = await remoteDataSource.getCurrentUser();
       return Right(user);
-    }
-   catch (e) {
+    } catch (e) {
       return Left(RemoteDatabaseFailure(message: 'Unexpected error: $e'));
     }
   }
 
   @override
-  Future<Either<Failure, String>> loginStudent(String username, String password) async {
+  Future<Either<Failure, String>> loginStudent(
+      String username, String password) async {
     try {
       final token = await remoteDataSource.loginStudent(username, password);
       return Right(token);
@@ -47,7 +47,7 @@ class StudentRemoteRepository implements IStudentRepository {
   @override
   Future<Either<Failure, String>> uploadProfilePicture(File file) async {
     try {
-      final imageUrl = await remoteDataSource.uploadProfilePicture(file.path);
+      final imageUrl = await remoteDataSource.uploadProfilePicture(file);
       return Right(imageUrl);
     } on DioException catch (e) {
       return Left(RemoteDatabaseFailure(

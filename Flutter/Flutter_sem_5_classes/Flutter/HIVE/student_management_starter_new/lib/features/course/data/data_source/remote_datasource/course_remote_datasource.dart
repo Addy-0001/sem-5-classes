@@ -15,11 +15,11 @@ class CourseRemoteDatasource implements ICourseDataSource {
   @override
   Future<void> createCourse(CourseEntity course) async {
     try {
-      final batchApiModel = CourseApiModel.fromEntity(course);
+      final courseApiModel = CourseApiModel.fromEntity(course);
 
       var response = await _apiService.dio.post(
-        ApiEndpoints.createBatch,
-        data: batchApiModel.toJson(),
+        ApiEndpoints.createCourse,
+        data: courseApiModel.toJson(),
       );
 
       if (response.statusCode == 201) {
@@ -41,7 +41,7 @@ class CourseRemoteDatasource implements ICourseDataSource {
   Future<void> deleteCourse(String courseId) async {
     try {
       var response = await _apiService.dio.delete(
-        '${ApiEndpoints.deleteBatch}/$courseId',
+        '${ApiEndpoints.deleteCourse}/$courseId',
       );
 
       if (response.statusCode == 200) {

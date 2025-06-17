@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:student_management/app/constant/api_endpoints.dart';
 import 'package:student_management/core/network/api_service.dart';
@@ -76,26 +78,32 @@ class StudentRemoteDatasource implements IStudentDataSource {
   }
 
   @override
-  Future<String> uploadProfilePicture(String filePath) async {
+  Future<String> uploadProfilePicture(File file) async {
     try {
-      final formData = FormData.fromMap({
-        'file': await MultipartFile.fromFile(filePath, filename: 'profile.jpg'),
+      String fileName = file.path.split('/').last;
+      FormData formData = FormData.fromMap({
+        'profilePicture': await MultipartFile.fromFile(
+          file.path,
+          filename: fileName,
+        ),
       });
 
-      final response = await _apiService.dio.post(
-        "${ApiEndpoints.baseUrl}${ApiEndpoints.uploadImage}",
+      Response response = await _apiService.dio.post(
+        ApiEndpoints.uploadImage,
         data: formData,
       );
 
       if (response.statusCode == 200) {
-        return response.data['imageUrl'];
+        // Extract the image name from the response
+        final str = response.data['data'];
+        return str;
       } else {
-        throw Exception('Image upload failed: ${response.statusMessage}');
+        throw Exception(response.statusMessage);
       }
     } on DioException catch (e) {
-      throw Exception('Dio error during image upload: ${e.message}');
+      throw Exception('Failed to upload profile picture: ${e.message}');
     } catch (e) {
-      throw Exception('Unexpected error: $e');
+      throw Exception('Failed to upload profile picture: $e');
     }
   }
 }
